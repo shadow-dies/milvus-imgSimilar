@@ -1,0 +1,92 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/search": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "查找相似图片",
+                "parameters": [
+                    {
+                        "description": "业务方",
+                        "name": "biz",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "主id",
+                        "name": "fileid",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "场景",
+                        "name": "scene",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "子id",
+                        "name": "extra_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "图片地址",
+                        "name": "url",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "响应结果",
+                        "schema": {
+                            "$ref": "#/definitions/main.resMsg"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.resMsg": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "相似图片ID",
+                    "type": "string"
+                },
+                "isSimilar": {
+                    "description": "是否相似",
+                    "type": "boolean"
+                },
+                "isopen": {
+                    "description": "图片是否正常打开",
+                    "type": "boolean"
+                },
+                "score": {
+                    "description": "相似度",
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+definitions:
+  main.resMsg:
+    properties:
+      id:
+        description: 相似图片ID
+        type: string
+      isSimilar:
+        description: 是否相似
+        type: boolean
+      isopen:
+        description: 图片是否正常打开
+        type: boolean
+      score:
+        description: 相似度
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /api/search:
+    post:
+      parameters:
+      - description: 业务方
+        in: body
+        name: biz
+        required: true
+        schema:
+          type: string
+      - description: 主id
+        in: body
+        name: fileid
+        required: true
+        schema:
+          type: string
+      - description: 场景
+        in: body
+        name: scene
+        schema:
+          type: string
+      - description: 子id
+        in: body
+        name: extra_id
+        schema:
+          type: string
+      - description: 图片地址
+        in: body
+        name: url
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 响应结果
+          schema:
+            $ref: '#/definitions/main.resMsg'
+      summary: 查找相似图片
+swagger: "2.0"
